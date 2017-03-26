@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "Balance Predictor",
+  "version": "0.1",
+
+  "default_locale": "en",
+  "description": "Predicts balance after upcoming transactions",
+  "icons": {
+    "16": "images/1402781551_currency_exchange_1.png",
+    "48": "images/1415072079_currency_exchange_1-48.png",
+    "128": "images/1415072098_currency_exchange_1-128.png"
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "19": "images/1415072771_currency_exchange_1-19.png",
+      "38": "images/1415072079_currency_exchange_1-38.png"
+    }
+  },
+
+  "background": {
+    "scripts": [
+      "main.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/ebank/account/initUpcomingPaymentsList.do*", "https://*/ebank/account/initUpcomingPaymentsList.do*"],
+      "js": ["aab-predictor.js"]
+    }
+  ],
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "<all_urls>"
+  ]
+
+}
